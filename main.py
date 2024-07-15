@@ -39,7 +39,8 @@ def generate_llm_response(message,passage):
 
     chain =  prompt | llm
     response = chain.invoke({"message": message, "best_responses": passage})
-    return response
+    print(response.content)
+    return response.content
 
 # Simalarity Check
 def sim_check(distance):
@@ -64,10 +65,8 @@ def main():
             processed_text = process_text(passages)
             #retreive info
             response = generate_llm_response(query,processed_text)
-            print(processed_text)
-            llm_response = response['text']
             emb_pass = model.encode(passages)
-            emb_resp = model.encode(llm_response)
+            emb_resp = model.encode(response)
 
             # Calculating distance between llm output and ground truth passage
             dist_llm = cosine_similarity(emb_pass,emb_resp.reshape(1,-1)).flatten()[0]
@@ -97,7 +96,7 @@ def main():
             st.write(" Euclidean Distance (More Distance more irrelvant): "+str(dist_eucl))
             st.info("Semantic Check : "+sim_check(dist_llm))
             with st.expander("LLM Output",False):
-                st.write(llm_response)
+                st.write(response)
         else:
             if passages or query is None:
                 st.warning("Please enter Text to get started",icon="⚠️")
