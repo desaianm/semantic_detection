@@ -8,7 +8,7 @@ from langchain.schema.runnable import RunnableSequence
 import streamlit as st
 import matplotlib.pyplot as plt
 
-
+# Model used for encoding text for comparison
 model = SentenceTransformer("all-mpnet-base-v2")
 
 def process_text(text):
