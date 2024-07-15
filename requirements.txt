@@ -1,0 +1,7 @@
+sentence-transformers
+scikit-learn
+langchain-community
+langchain-openai
+streamlit
+matplotlib
+plotly
