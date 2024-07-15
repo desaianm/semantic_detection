@@ -1,7 +1,6 @@
+streamlit<=1.34.0
 sentence-transformers
 scikit-learn
 langchain-community
 langchain-openai
-streamlit
 matplotlib
-plotly
