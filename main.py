@@ -89,6 +89,7 @@ def main():
             ax.legend()
             ax.grid(True)
             st.pyplot(fig)
+            plt.close(fig)
 
 
             # Displaying Distance Metrics for Semantic Detection
